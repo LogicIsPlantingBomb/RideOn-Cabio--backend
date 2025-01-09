@@ -11,6 +11,6 @@ module.exports.createUser = ({firstname,lastname,password,email})=>{
 		},
 		email,
 		password
-	})
+	});
 	return user;
 }
