@@ -1,5 +1,6 @@
 # uber
-# Backend API Documentation
+
+## Backend API Documentation
 
 This repository contains a backend system for user authentication and profile management, built using Node.js, Express, and MongoDB.
 
@@ -138,6 +139,54 @@ Authorization: Bearer <jwt-token>
   "message": "Logged Out"
 }
 ```
+
+---
+
+### Captain Endpoints
+
+#### Register Captain
+**POST** `/captains/register`
+
+**Request Body:**
+```json
+{
+  "fullname": {
+    "firstname": "Jane",
+    "lastname": "Smith"
+  },
+  "email": "jane.smith@example.com",
+  "password": "securepassword",
+  "vehicle": {
+    "color": "Red",
+    "plate": "XYZ123",
+    "capacity": 4,
+    "vehicleType": "car"
+  }
+}
+```
+
+**Response:**
+```json
+{
+  "token": "jwt-token",
+  "captain": {
+    "_id": "captain-id",
+    "fullname": {
+      "firstname": "Jane",
+      "lastname": "Smith"
+    },
+    "email": "jane.smith@example.com",
+    "vehicle": {
+      "color": "Red",
+      "plate": "XYZ123",
+      "capacity": 4,
+      "vehicleType": "car"
+    }
+  }
+}
+```
+
+---
 
 ## Project Structure
 - **models/**: Contains Mongoose schemas for database models
