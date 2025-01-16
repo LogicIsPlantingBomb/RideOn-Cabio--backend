@@ -1,14 +1,16 @@
-# RideOn Cabio Backend API Documentation
+# RideOn Cabio
 
-This repository contains a backend system for user and captain authentication and profile management, built using Node.js, Express, and MongoDB.
+## Backend API Documentation
+
+This repository contains a backend system for user authentication and profile management, built using Node.js, Express, and MongoDB.
 
 ## Features
-- User and Captain registration
-- User and Captain login
+- User registration
+- User login
 - Profile management
 - Secure password hashing
 - Token-based authentication
-- Logout functionality
+- User logout
 
 ## Installation
 1. Clone the repository:
@@ -71,6 +73,8 @@ This repository contains a backend system for user and captain authentication an
 }
 ```
 
+---
+
 #### Login User
 **POST** `/users/login`
 
@@ -97,6 +101,8 @@ This repository contains a backend system for user and captain authentication an
 }
 ```
 
+---
+
 #### Get User Profile
 **GET** `/users/profile`
 
@@ -117,8 +123,10 @@ Authorization: Bearer <jwt-token>
 }
 ```
 
+---
+
 #### Logout User
-**POST** `/users/logout`
+**GET** `/users/logout`
 
 **Headers:**
 ```
@@ -128,9 +136,11 @@ Authorization: Bearer <jwt-token>
 **Response:**
 ```json
 {
-  "message": "Logout successfully"
+  "message": "Logged Out"
 }
 ```
+
+---
 
 ### Captain Endpoints
 
@@ -176,6 +186,8 @@ Authorization: Bearer <jwt-token>
 }
 ```
 
+---
+
 #### Login Captain
 **POST** `/captains/login`
 
@@ -193,10 +205,16 @@ Authorization: Bearer <jwt-token>
   "token": "jwt-token",
   "captain": {
     "_id": "captain-id",
+    "fullname": {
+      "firstname": "Jane",
+      "lastname": "Smith"
+    },
     "email": "jane.smith@example.com"
   }
 }
 ```
+
+---
 
 #### Get Captain Profile
 **GET** `/captains/profile`
@@ -224,6 +242,8 @@ Authorization: Bearer <jwt-token>
 }
 ```
 
+---
+
 #### Logout Captain
 **POST** `/captains/logout`
 
@@ -235,9 +255,11 @@ Authorization: Bearer <jwt-token>
 **Response:**
 ```json
 {
-  "message": "Logout successfully"
+  "message": "Logged Out"
 }
 ```
+
+---
 
 ## Project Structure
 - **models/**: Contains Mongoose schemas for database models
