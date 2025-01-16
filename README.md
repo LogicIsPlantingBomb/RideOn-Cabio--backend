@@ -1,16 +1,14 @@
-# uber
+# Uber Backend API Documentation
 
-## Backend API Documentation
-
-This repository contains a backend system for user authentication and profile management, built using Node.js, Express, and MongoDB.
+This repository contains a backend system for user and captain authentication and profile management, built using Node.js, Express, and MongoDB.
 
 ## Features
-- User registration
-- User login
+- User and Captain registration
+- User and Captain login
 - Profile management
 - Secure password hashing
 - Token-based authentication
-- User logout
+- Logout functionality
 
 ## Installation
 1. Clone the repository:
@@ -73,8 +71,6 @@ This repository contains a backend system for user authentication and profile ma
 }
 ```
 
----
-
 #### Login User
 **POST** `/users/login`
 
@@ -101,8 +97,6 @@ This repository contains a backend system for user authentication and profile ma
 }
 ```
 
----
-
 #### Get User Profile
 **GET** `/users/profile`
 
@@ -123,10 +117,8 @@ Authorization: Bearer <jwt-token>
 }
 ```
 
----
-
 #### Logout User
-**GET** `/users/logout`
+**POST** `/users/logout`
 
 **Headers:**
 ```
@@ -136,11 +128,9 @@ Authorization: Bearer <jwt-token>
 **Response:**
 ```json
 {
-  "message": "Logged Out"
+  "message": "Logout successfully"
 }
 ```
-
----
 
 ### Captain Endpoints
 
@@ -186,7 +176,68 @@ Authorization: Bearer <jwt-token>
 }
 ```
 
----
+#### Login Captain
+**POST** `/captains/login`
+
+**Request Body:**
+```json
+{
+  "email": "jane.smith@example.com",
+  "password": "securepassword"
+}
+```
+
+**Response:**
+```json
+{
+  "token": "jwt-token",
+  "captain": {
+    "_id": "captain-id",
+    "email": "jane.smith@example.com"
+  }
+}
+```
+
+#### Get Captain Profile
+**GET** `/captains/profile`
+
+**Headers:**
+```
+Authorization: Bearer <jwt-token>
+```
+
+**Response:**
+```json
+{
+  "_id": "captain-id",
+  "fullname": {
+    "firstname": "Jane",
+    "lastname": "Smith"
+  },
+  "email": "jane.smith@example.com",
+  "vehicle": {
+    "color": "Red",
+    "plate": "XYZ123",
+    "capacity": 4,
+    "vehicleType": "car"
+  }
+}
+```
+
+#### Logout Captain
+**POST** `/captains/logout`
+
+**Headers:**
+```
+Authorization: Bearer <jwt-token>
+```
+
+**Response:**
+```json
+{
+  "message": "Logout successfully"
+}
+```
 
 ## Project Structure
 - **models/**: Contains Mongoose schemas for database models
